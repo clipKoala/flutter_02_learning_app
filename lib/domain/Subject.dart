@@ -4,6 +4,8 @@ class Subject {
 
   Subject(this.name, {this.time = 0});
 
+  String get timeString => time.toString();
+
   @override
   String toString() {
     return 'Subject{name: $name, time: $time}';

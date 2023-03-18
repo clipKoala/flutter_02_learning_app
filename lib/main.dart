@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_02_learning_app/domain/Subject.dart';
+import 'witgets/subject_desctription/subjectDesctriptionList_widget.dart';
 
 void main() {
   runApp(const LearningApp());
@@ -24,7 +25,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var subjects = <Subject>[];
+  var subjects = <Subject>[
+    new Subject('name1', time: 1),
+    new Subject('name2'),
+    new Subject('name3'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +44,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('My subjects'),
         backgroundColor: Colors.green,
       ),
-      body: Column(
-        children: [
-          Flexible(
-            flex: 1,
-            child: Container(
-              color: Colors.blueGrey,
-            ),
-          ),
-          Flexible(
-            flex: 1,
-            child: Container(
-              color: Colors.blueGrey,
-              padding: const EdgeInsets.all(8.0),
-            ),
-          ),
-        ],
-      ),
+      body: DescriptionList(subjects: subjects),
     );
   }
 
