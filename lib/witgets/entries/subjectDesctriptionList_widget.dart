@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_02_learning_app/domain/Subject.dart';
+import 'package:flutter_02_learning_app/domain/subject.dart';
 
 import 'subjectDesctriptionEntry_widget.dart';
 

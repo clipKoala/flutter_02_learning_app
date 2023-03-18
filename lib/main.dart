@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_02_learning_app/domain/Subject.dart';
-import 'witgets/subject_desctription/subjectDesctriptionList_widget.dart';
+import 'package:flutter_02_learning_app/domain/subject.dart';
+import 'witgets/entries/subjectDesctriptionList_widget.dart';
 
 void main() {
   runApp(const LearningApp());
