@@ -5,9 +5,14 @@ class TimeProportion {
 
   TimeProportion();
 
-  int proportion(int time) {
-    List<Subject> subjects = Data().subjects();
-    int i =((time / subjects.length) * 10).round();
-    return i;
+  int allTime() {
+    int time = 0;
+    for (Subject subject in new Data().subjects) {
+      if (subject.time >= time) time = subject.time;
+    }
+    return time;
   }
+
+  int proportion(time) => time / allTime() * 1000 ~/ 100;
+  // ich habe die Werte so ausprobiert und das ist die einzige Variante, die funktioniert
 }
