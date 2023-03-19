@@ -7,11 +7,6 @@ class Subject {
   String get timeString => time.toString();
 
   @override
-  String toString() {
-    return 'Subject{name: $name, time: $time}';
-  }
-
-  @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Subject &&

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_02_learning_app/domain/subject.dart';
-import 'witgets/entries/subjectDesctriptionList_widget.dart';
+import '../domain/subject.dart';
+import '../persistence/entryData.dart';
+import 'witgets/subjectDesctriptionList_widget.dart';
 
 void main() {
   runApp(const LearningApp());
@@ -25,11 +26,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var subjects = <Subject>[
-    new Subject('name1', time: 1),
-    new Subject('name2'),
-    new Subject('name3'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('My subjects'),
         backgroundColor: Colors.green,
       ),
-      body: DescriptionList(subjects: subjects),
+      body: DescriptionList(),
     );
   }
 
@@ -58,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               onSubmitted: (value) {
                 var subject = Subject(value);
                 setState(() {
-                  subjects.add(subject);
+                  new Data().addSubject(subject);
                 });
                 Navigator.pop(context);
               },

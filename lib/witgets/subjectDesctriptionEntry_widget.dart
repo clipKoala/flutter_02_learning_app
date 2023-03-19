@@ -4,6 +4,8 @@ import 'package:flutter_02_learning_app/domain/subject.dart';
 
 import 'subjectValueEntry_widget.dart';
 
+
+
 class DescriptionEntry extends StatelessWidget {
   DescriptionEntry(this.subject_description, {Key? key});
 
@@ -19,7 +21,7 @@ class DescriptionEntry extends StatelessWidget {
           margin: const EdgeInsets.fromLTRB(15, 5, 15, 0),
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           height: 50,
-          child: Entry_rowValue_widget(),
+          child: Entry_rowValue_widget(subject_description),
         ),
       ),
     );
