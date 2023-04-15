@@ -14,9 +14,9 @@ class EntryService {
             TextField(
               onSubmitted: (value) {
                 var subject = Subject(value);
-                state(() {
+                //state(() {
                   new Data().addSubject(subject);
-                });
+                //});
                 Navigator.pop(context);
               },
             ),
