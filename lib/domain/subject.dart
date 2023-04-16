@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Subject {
-  int _id;
+  final _id = UniqueKey();
   String _name;
   double _time;
   DateTime _date = DateTime.now();
@@ -13,6 +13,8 @@ class Subject {
         _name = name;
 
   String get timeString => _time.toString();
+
+  get id => _id;
 
   double get time => _time;
 

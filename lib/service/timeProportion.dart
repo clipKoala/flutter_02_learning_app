@@ -1,5 +1,5 @@
 import '../domain/subject.dart';
-import '../persistence/entryData.dart';
+import '../persistence/profile_provider.dart';
 
 class TimeProportion {
 
@@ -7,7 +7,7 @@ class TimeProportion {
 
   int allTime() {
     int time = 0;
-    for (Subject subject in new Data().subjects) {
+    for (Subject subject in new ProfileProvider().subjects) {
       if (subject.time >= time) time = subject.time;
     }
     return time;
