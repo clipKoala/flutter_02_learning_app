@@ -1,19 +1,24 @@
+import 'package:flutter/material.dart';
+
 class Subject {
-  final String name;
-  int time;
+  int _id;
+  String _name;
+  double _time;
+  DateTime _date = DateTime.now();
+  Color _color;
 
-  Subject(this.name, {this.time = 0});
+  Subject({required name, time = 0, color = const Color(0xff48A34C)})
+      : _color = color,
+        _time = time,
+        _name = name;
 
-  String get timeString => time.toString();
+  String get timeString => _time.toString();
 
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Subject &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          time == other.time;
+  double get time => _time;
 
-  @override
-  int get hashCode => name.hashCode ^ time.hashCode;
+  Color get color => _color;
+
+  DateTime get date => _date;
+
+  String get name => _name;
 }
