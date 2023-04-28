@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_02_learning_app/witgets/pages/base_page.dart';
+import 'package:flutter_02_learning_app/pages/base_page.dart';
 
 class Loading extends StatelessWidget {
   Loading({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class Loading extends StatelessWidget {
             );
           },
           child: const LoadingPageContent(),
-          onEnd: () => waite(context, 3, const BasePage())),
+          onEnd: () => waite(context, 3, BasePage())),
     );
   }
 

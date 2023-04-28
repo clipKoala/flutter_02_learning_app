@@ -1,39 +1,43 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart';
 
-import 'add.dart';
-import 'home.dart';
+import '../persistence/screen_provider.dart';
+import 'edit.dart';
+import 'profile.dart';
 import 'entries.dart';
 import 'statistics.dart';
 
-class BasePage extends StatefulWidget {
-  const BasePage({Key? key}) : super(key: key);
-
-  @override
-  State<BasePage> createState() => _BasePageState();
-}
-
-class _BasePageState extends State<BasePage> {
-  int currentTab = 0;
+class BasePage extends StatelessWidget {
+  BasePage({Key? key}) : super(key: key);
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Home();
+
+  // Widget currentScreen = ProfilePage();
 
   @override
   Widget build(BuildContext context) {
+    var currentTab = Provider.of<ScreenProvider>(context, listen: true);
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Larning App"),
+          title: const ListTile(
+            title: Text("Larning App"),
+            // trailing: Text('hallo'),
+            textColor: Colors.white,
+          ),
           backgroundColor: const Color(0xff48a34c),
           automaticallyImplyLeading: false,
-          toolbarHeight: 40,
+          toolbarHeight: 45,
           leading: const Icon(Icons.school_rounded, color: Colors.white),
         ),
         body: PageStorage(
           bucket: bucket,
-          child: currentScreen,
+          child: currentTab.currentScreen,
         ),
         bottomNavigationBar: Container(
+          width: 200,
           margin: const EdgeInsets.all(20),
           padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
           decoration: const BoxDecoration(
@@ -49,43 +53,35 @@ class _BasePageState extends State<BasePage> {
             textStyle: TextStyle(letterSpacing: 1, color: Colors.white),
             tabs: [
               GButton(
-                icon: Icons.home,
-                text: 'home',
+                icon: Icons.home_work_outlined,
+                text: 'profiles',
                 onPressed: () {
-                  setState(() {
-                    currentScreen = Home();
-                    currentTab = 0;
-                  });
+                  currentTab.change_current_tab(0, ProfilePage());
                 },
               ),
               GButton(
                 icon: Icons.sticky_note_2_outlined,
                 text: 'entries',
                 onPressed: () {
-                  setState(() {
-                    currentScreen = Entries();
-                    currentTab = 1;
-                  });
+                  currentTab.change_current_tab(1, Entries());
                 },
               ),
               GButton(
                 icon: Icons.stacked_line_chart_outlined,
                 text: 'statistics',
                 onPressed: () {
-                  setState(() {
-                    currentScreen = Statistics();
-                    currentTab = 2;
-                  });
+                  currentTab.change_current_tab(2, Statistics());
                 },
               ),
               GButton(
-                icon: Icons.add_comment_outlined,
-                text: 'add',
+                icon: Icons.edit_outlined,
+                text: 'edit',
                 onPressed: () {
-                  setState(() {
-                    currentScreen = Add();
-                    currentTab = 3;
-                  });
+                  // currentTab.change_current_tab(3, Edit());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Edit()),
+                  );
                 },
               )
             ],
